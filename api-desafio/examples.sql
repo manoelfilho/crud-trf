@@ -1,0 +1,1 @@
+INSERT INTO empresas (bairro, cep, cidade, cnpj, complemento, contato, email, ) VALUES ('Default', 'ROLE_DEFAULT');

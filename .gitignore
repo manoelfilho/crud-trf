@@ -1,0 +1,30 @@
+volume_mysql
+front-desafio/node_modules
+api_desafio/
+
+api_desafio/HELP.md
+api_desafio/target
+api_desafio/!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+api_desafio/.apt_generated
+api_desafio/.classpath
+api_desafio/.factorypath
+api_desafio/.project
+api_desafio/.settings
+api_desafio/.springBeans
+api_desafio/.sts4-cache
+
+### IntelliJ IDEA ###
+api_desafio/.idea
+api_desafio/*.iws
+api_desafio/*.iml
+api_desafio/*.ipr
+
+### NetBeans ###
+api_desafio/nbproject/private/
+api_desafio/nbbuild/
+api_desafio/dist/
+api_desafio/nbdist/
+api_desafio/.nb-gradle/
+api_desafio/build

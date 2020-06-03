@@ -1,0 +1,110 @@
+<div class="card">
+  
+    <form>
+        
+        <h5 class="card-header">Formulário para cadastro</h5>
+
+        <div class="alert alert-danger" *ngIf="showError">
+            <ul>
+                <li *ngFor="let error of erros.error.errors">{{error}}</li>
+            </ul>
+        </div>
+
+        <div class="alert alert-success" *ngIf="showSuccess">
+           Empresa cadastrada com sucesso
+        </div>
+    
+        <div class="card-body">
+
+            <input type="hidden" [(ngModel)]="empresa.id" name="id">
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCNPJ">CNPJ*</label>
+                    <input type="text" class="form-control" id="inputCNPJ" placeholder="CNPJ" [(ngModel)]="empresa.cnpj" name="cnpj" maxlength="18" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputTipoEmpresa">Tipo da empresa*</label>
+                    <select id="inputTipoEmpresa" class="form-control" [(ngModel)]="empresa.tipoEmpresa" name="tipoEmpresa">
+                        <option *ngFor="let tipoEmpresa of tipoEmpresaOptions" [value]="tipoEmpresa">{{tipoEmpresa}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputNome">Nome da empresa*</label>
+                    <input type="text" class="form-control" id="inputNome" placeholder="Nome da empresa" [(ngModel)]="empresa.nome" name="nome" maxlength="50" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputRazaosocial">Razão Social*</label>
+                    <input type="text" class="form-control" id="inputRazaosocial" placeholder="Razão Social" [(ngModel)]="empresa.razaoSocial" name="razao_social" maxlength="40" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputContato">Contato*</label>
+                    <input type="text" class="form-control" id="inputContato" placeholder="Contato" [(ngModel)]="empresa.contato" name="contato" maxlength="40" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEmail">Email*</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" [(ngModel)]="empresa.email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                
+                <div class="form-group col-md-6">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCEP">CEP*</label>
+                            <input type="text" class="form-control" id="inputCEP" placeholder="CEP" [(ngModel)]="empresa.cep" name="cep" maxlength="8" required>
+                            <small style="color: red;" *ngIf="cepPesquisado && !cepLocalizado">CEP não localizado</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button class="btn btn-primary" style="margin-top: 32px;" (click)="buscaCEP()">Buscar CEP</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputEstado">Estado*</label>
+                    <input type="estado" class="form-control" id="inputEstado" placeholder="Estado" [(ngModel)]="empresa.estado" name="estado" maxlength="40" required>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputBairro">Bairro*</label>
+                    <input type="text" class="form-control" id="inputBairro" placeholder="Bairro" [(ngModel)]="empresa.bairro" name="bairro" maxlength="40" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputCidade">Cidade*</label>
+                    <input type="text" class="form-control" id="inputCidade" placeholder="Cidade" [(ngModel)]="empresa.cidade" name="cidade" maxlength="40" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputLogradouro">Logradouro*</label>
+                    <input type="text" class="form-control" id="inputLogradouro" placeholder="Logradouro" [(ngModel)]="empresa.logradouro" name="logradouro" maxlength="40" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputComplemento">Complemento</label>
+                    <input type="text" class="form-control" id="inputComplemento" placeholder="Complemento" [(ngModel)]="empresa.complemento" name="complemento" maxlength="40">
+                </div>
+            </div>
+    
+        </div>
+    
+        <div class="card-footer">
+            <div class="d-flex d-flex justify-content-center">
+                <div class="p-2"><button type="submit" class="btn btn-primary" (click) = "listEmpresas()">Lista de empresas</button></div>
+                <div class="p-2"><button type="submit" class="btn btn-primary" (click) = "salvarEmpresa()">Salvar</button></div>
+            </div>
+        </div>
+
+    </form>
+  
+</div>

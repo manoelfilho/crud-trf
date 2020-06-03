@@ -1,0 +1,65 @@
+<div class="card">
+  
+  <h5 class="card-header">Empresas cadastradas</h5>
+  
+  <div class="card-body">
+
+    <form class="form-pesquisa">
+      <div class="row">
+        <div class="col">
+          <label for="inputEmail3" class="col-form-label">CNPJ</label>
+          <input type="text" class="form-control" placeholder="Digite o CNPJ para filtro" [(ngModel)]="filter.cnpj" name="cnpj">
+        </div>
+        <div class="col">
+          <label for="inputEmail3" class="col-form-label">Nome da empresa</label>
+          <input type="text" class="form-control" placeholder="Digite o nome da empresa para filtro" [(ngModel)]="filter.nome" name="cnpj">
+        </div>
+      </div>
+    </form>
+
+    <div class="d-flex d-flex justify-content-center">
+      <div class="p-2"><button type="submit" class="btn btn-primary" (click)="newEmpresa()">Novo cadastro</button></div>
+      <div class="p-2"><button type="submit" class="btn btn-primary" (click)="onFilter()">Pesquisar</button></div>
+    </div>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nome</th>
+          <th scope="col">CNPJ</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empresa of empresas | paginate: { itemsPerPage: pageable.numberOfElements, currentPage: pageable.number+1, totalItems: pageable.totalElements }">
+          <td>{{empresa.id}}</td>
+          <td>{{empresa.nome}}</td>
+          <td>{{empresa.cnpj}}</td>
+          <td>
+            <button type="button" class="btn btn-warning btn-sm" (click)="editEmpresa(empresa)">Editar</button>
+            <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteEmpresa(empresa)">Deletar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <span>Qtd. Registros: {{ pageable.totalElements }}</span>
+
+  </div>
+
+  <div class="card-footer">
+    <div class="d-flex d-flex justify-content-center">
+      <div class="p-2"></div>
+      <div class="p-2">
+        <pagination-controls 
+          (pageChange)="changePage($event)" 
+          previousLabel="Anterior"
+          nextLabel="Próximo">
+        </pagination-controls>
+      </div>
+      <div class="p-2"></div>
+    </div>
+  </div>
+
+</div>
