@@ -73,9 +73,11 @@ export class EmpresasComponent implements OnInit {
   }
 
   deleteEmpresa(empresa: Empresa) {
-    this.empreService.deleteEmpresa(empresa).subscribe(() => {
-      this.getEmpresas();
-    });
+    if (confirm("Deseja remover a empresa?")){
+      this.empreService.deleteEmpresa(empresa).subscribe(() => {
+        this.getEmpresas();
+      });
+    }
   }
 
   editEmpresa(empresa: Empresa) {

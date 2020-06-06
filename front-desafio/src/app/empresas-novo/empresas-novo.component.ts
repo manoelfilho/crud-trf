@@ -69,6 +69,7 @@ export class EmpresasNovoComponent implements OnInit {
         this.empresa.complemento = res.complemento;
         this.empresa.cidade = res.localidade;
         this.empresa.estado = res.uf;
+        this.empresa.logradouro = res.logradouro;
 
       }else{
         this.cepLocalizado = false;

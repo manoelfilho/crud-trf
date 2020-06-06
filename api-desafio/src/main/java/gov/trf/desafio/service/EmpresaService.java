@@ -30,7 +30,10 @@ public class EmpresaService {
 	}
 
 	public void delete(Integer idEmpresa) {
-		
+		Optional<Empresa> savedEmpresa = empresaRepository.findById(idEmpresa);
+		if (savedEmpresa.isPresent()) {
+			empresaRepository.delete(savedEmpresa.get());
+		}
 	}
 
 	public Slice<Empresa> filtrar(int pagina, int tamanho, String nome, String cnpj) {
